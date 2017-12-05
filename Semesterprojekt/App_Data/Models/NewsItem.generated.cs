@@ -22,7 +22,7 @@ namespace Umbraco.Web.PublishedContentModels
 {
 	/// <summary>News item</summary>
 	[PublishedContentModel("newsItem")]
-	public partial class NewsItem : PublishedContentModel, IContentBase, INavigationBase
+	public partial class NewsItem : PublishedContentModel, INavigationBase
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "newsItem";
@@ -46,21 +46,48 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// Content
+		/// Body text: The content of the news article
 		///</summary>
 		[ImplementPropertyType("bodyText")]
-		public Newtonsoft.Json.Linq.JToken BodyText
+		public IHtmlString BodyText
 		{
-			get { return Umbraco.Web.PublishedContentModels.ContentBase.GetBodyText(this); }
+			get { return this.GetPropertyValue<IHtmlString>("bodyText"); }
 		}
 
 		///<summary>
-		/// Page Title: The title of the page, this is also the first text in a google search result. The ideal length is between 40 and 60 characters
+		/// Date: Shown date of publication
+		///</summary>
+		[ImplementPropertyType("date")]
+		public DateTime Date
+		{
+			get { return this.GetPropertyValue<DateTime>("date"); }
+		}
+
+		///<summary>
+		/// Excerpt: Short introduction or teaser for the news
+		///</summary>
+		[ImplementPropertyType("excerpt")]
+		public string Excerpt
+		{
+			get { return this.GetPropertyValue<string>("excerpt"); }
+		}
+
+		///<summary>
+		/// Hero Image: Image of the article
+		///</summary>
+		[ImplementPropertyType("heroImage")]
+		public IPublishedContent HeroImage
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("heroImage"); }
+		}
+
+		///<summary>
+		/// Page title: The title of the page, this is also the first text in a google search result. The ideal length is between 40 and 60 characters
 		///</summary>
 		[ImplementPropertyType("pageTitle")]
 		public string PageTitle
 		{
-			get { return Umbraco.Web.PublishedContentModels.ContentBase.GetPageTitle(this); }
+			get { return this.GetPropertyValue<string>("pageTitle"); }
 		}
 
 		///<summary>

@@ -1,5 +1,68 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.NewsArea>
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
-	Layout = "Master.cshtml";
+    Layout = "Master.cshtml";
+
+    //Get all the news from the News section (NewsDate = CreateDate)
+    var newsDown = Model.Content.Site().Descendants<NewsItem>()
+        .OrderBy(x => x.Date)
+        .Reverse()
+        .Skip(1)
+        .Take(3);
+
+    var newsFront = Model.Content.Site().Descendants<NewsItem>()
+        .OrderBy(x => x.Date)
+        .Reverse();
+
 }
+
+
+@Html.Partial("~/Views/Partials/SectionHeader.cshtml")
+<br /><br />
+<div class="container">
+    <div class="row">
+        @{
+            //present the news
+            foreach (var item in newsFront)
+            {
+                
+                    <div style="background-color: #f4f4f0; height: 400px; " class="col-md-4">
+                        <h2>@item.PageTitle</h2>
+                        <div>@item.Date.ToShortDateString()</div>
+                        <p>@item.Excerpt</p>
+                        <button formaction="@item.Url" class="btn-danger">Read More ></button>
+                    </div>
+                    <a class="aWhite" href="@item.Url">
+                        <img class=" col-md-8, img-fluid" src="@item.HeroImage.Url?width=600" alt="#" />
+                    </a>
+
+                    
+                break;
+            }
+        }
+    </div>
+</div>
+<hr />
+<div class="container">
+    <div class="row">
+        @{
+            //present the news
+            //<img class="img-fluid" src="@item.HeroImage.Url?width=300" alt="#" /> <--Orginal img solution
+            foreach (var item in newsDown)
+            {
+
+                <a style=""class="aColor" href="@item.Url">
+                    <div style="background:url(@item.HeroImage.Url); background-size: cover" class="col-md-4">
+                        <h2>@item.PageTitle</h2>
+                        <div>@item.Date.ToShortDateString()</div>
+
+                        
+                        <p>@item.Excerpt</p>
+                        
+                    </div>
+                </a>
+
+            }
+        }
+    </div>
+</div>
