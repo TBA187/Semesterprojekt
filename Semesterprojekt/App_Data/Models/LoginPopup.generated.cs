@@ -20,16 +20,16 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedContentModels
 {
-	/// <summary>Contact</summary>
-	[PublishedContentModel("contact")]
-	public partial class Contact : PublishedContentModel, INavigationBase
+	/// <summary>Login popup</summary>
+	[PublishedContentModel("loginPopup")]
+	public partial class LoginPopup : PublishedContentModel, IContentBase, INavigationBase
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "contact";
+		public new const string ModelTypeAlias = "loginPopup";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public Contact(IPublishedContent content)
+		public LoginPopup(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,63 +40,18 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Contact, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<LoginPopup, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
 
 		///<summary>
-		/// ApiKey: To use the map you'll need your own Google API key. More information here: https://developers.google.com/maps/documentation/javascript/error-messages#no-api-keys
+		/// Content
 		///</summary>
-		[ImplementPropertyType("apiKey")]
-		public string ApiKey
+		[ImplementPropertyType("bodyText")]
+		public Newtonsoft.Json.Linq.JToken BodyText
 		{
-			get { return this.GetPropertyValue<string>("apiKey"); }
-		}
-
-		///<summary>
-		/// Pick a Contact Form: If Umbraco Forms is installed you'll be able to select a form here.
-		///</summary>
-		[ImplementPropertyType("contactForm")]
-		public string ContactForm
-		{
-			get { return this.GetPropertyValue<string>("contactForm"); }
-		}
-
-		///<summary>
-		/// Contact Form Header
-		///</summary>
-		[ImplementPropertyType("contactFormHeader")]
-		public string ContactFormHeader
-		{
-			get { return this.GetPropertyValue<string>("contactFormHeader"); }
-		}
-
-		///<summary>
-		/// Contact Intro
-		///</summary>
-		[ImplementPropertyType("contactIntro")]
-		public IHtmlString ContactIntro
-		{
-			get { return this.GetPropertyValue<IHtmlString>("contactIntro"); }
-		}
-
-		///<summary>
-		/// Your Address: Plot your address on the map and it'll be displayed on the contact page
-		///</summary>
-		[ImplementPropertyType("map")]
-		public object Map
-		{
-			get { return this.GetPropertyValue("map"); }
-		}
-
-		///<summary>
-		/// Map Header
-		///</summary>
-		[ImplementPropertyType("mapHeader")]
-		public string MapHeader
-		{
-			get { return this.GetPropertyValue<string>("mapHeader"); }
+			get { return Umbraco.Web.PublishedContentModels.ContentBase.GetBodyText(this); }
 		}
 
 		///<summary>
@@ -105,7 +60,7 @@ namespace Umbraco.Web.PublishedContentModels
 		[ImplementPropertyType("pageTitle")]
 		public string PageTitle
 		{
-			get { return this.GetPropertyValue<string>("pageTitle"); }
+			get { return Umbraco.Web.PublishedContentModels.ContentBase.GetPageTitle(this); }
 		}
 
 		///<summary>
