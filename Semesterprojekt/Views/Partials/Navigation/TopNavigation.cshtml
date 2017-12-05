@@ -1,5 +1,23 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @using Umbraco.Web;
+
+@{
+    if (Request["userAction"] != null)
+    {
+        // If the user request "userActioN" which means, presses the "login" button, go to "/login-page/"
+        if (Request["userAction"] == "Login")
+        {
+            Response.Redirect("/login/");
+        }
+        else
+        {
+            // Else - it means they want to logout. In this case, redirect to home page.
+            Members.Logout();
+            Response.Redirect("/");
+        }
+    }
+}
+
 @{ 
     var site = Model.Content.Site();
     var selection = site.Children.Where(x => x.IsVisible());
@@ -11,4 +29,8 @@
     <a class="nav-link @(item.IsAncestorOrSelf(Model.Content) ? "nav-link--active" : null)" href="@item.Url">@item.Name</a>
 }
 
-@Html.Partial("Status")
+<form class="form-inline my-2 my-lg-0">
+    <input type="hidden" name="userAction" value="@((Members.IsLoggedIn()) ? "Logout" : "Login")" />
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> @((Members.IsLoggedIn()) ? "Logout" : "Login") </button>
+    @Html.Partial("Status")
+</form>
