@@ -20,7 +20,7 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedContentModels
 {
-	/// <summary>Login</summary>
+	/// <summary>Login popup</summary>
 	[PublishedContentModel("loginPopup")]
 	public partial class LoginPopup : PublishedContentModel, IContentBase, INavigationBase
 	{
