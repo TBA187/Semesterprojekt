@@ -317,6 +317,11 @@
     <Content Include="Views\Partials\Navigation\SubNavigation.cshtml" />
     <Content Include="Views\Partials\Navigation\TopNavigation.cshtml" />
     <Content Include="Views\Partials\SectionHeader.cshtml" />
+    <Content Include="Views\Partials\Login.cshtml" />
+    <Content Include="Views\LoginPopup.cshtml" />
+    <Content Include="Views\Partials\Register.cshtml" />
+    <Content Include="Views\Partials\Status.cshtml" />
+    <Content Include="Views\ErrorPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
