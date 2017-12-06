@@ -32,5 +32,5 @@
 <form class="form-inline my-2 my-lg-0">
     <input type="hidden" name="userAction" value="@((Members.IsLoggedIn()) ? "Logout" : "Login")" />
     <button class="navbar-button" type="submit"> @((Members.IsLoggedIn()) ? "Logout" : "Login") </button>
-    @Html.Partial("Status")
 </form>
+@Html.Partial("Status")

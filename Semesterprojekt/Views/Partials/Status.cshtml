@@ -30,6 +30,8 @@
 
 @if (loginStatusModel.IsLoggedIn)
 {
-    <p> @loginStatusModel.Name</p>
-
+    <div class="status">
+        <p class="loggedInAs"> Logged in as</p>
+        <p class="name"> @loginStatusModel.Name</p>
+    </div>
 }
