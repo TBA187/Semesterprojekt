@@ -1341,9 +1341,9 @@ body.theme-font-mono {
 
     .header--fixed .nav-bar {
         position: absolute;
-        left: 50%;
+        left: 45%;
         top: 50%;
-        transform: translate(-50%,-50%)
+        transform: translate(-20%,-45%);
     }
 
     .header--fixed .nav-link {
@@ -1388,7 +1388,8 @@ footer {
 }
 
 .logo {
-    padding-left: 20px
+    padding-left: 20px;
+    padding-right:50px !important;
 }
 
 .logo-image {
@@ -1405,7 +1406,9 @@ footer {
     -ms-flex-align: center;
     align-items: center;
     -ms-flex-direction: row;
-    flex-direction: row
+    flex-direction: row;
+    width:60%;
+
 }
 
 .nav-bar--list {

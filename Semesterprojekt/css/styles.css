@@ -1,0 +1,109 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.name {
+    font-weight: 600;
+    font-family: Noto Sans,sans-serif;
+    color: #000;
+    margin:0 !important;
+}
+
+.status {
+    position: relative;
+    margin: 0 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    left: 50px;
+}
+
+.loggedInAs {
+    font-size:10px;
+    color:#000;
+    margin:0 !important;
+}
+
+.navbar-button {
+    font-family: Noto Sans,sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #000;
+    width: 100%;
+    border: 0;
+    padding: 7.5px 0px;
+    color: #fff;
+    font-size: 14px;
+    font-weight:600;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    margin:15px;
+}
+.form-wrapper {
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+    width:60%;
+    margin: 0 auto;
+}
+
+    .form-wrapper h2 {
+        font-family: sans-serif;
+        font-weight:900;
+        font-size:20px;
+
+    }
+
+.login-page {
+    width: 360px;
+}
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  padding: 45px;
+  margin: 100px 0px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2 !important;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.form button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #e7afa3;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+    .form button:hover, .form button:active, .form button:focus {
+        background: #e7afa3;
+    }
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+.form .message a {
+  color: #e7afa3;
+  text-decoration: none;
+}
+.form .register-form {
+  display: none;
+}
