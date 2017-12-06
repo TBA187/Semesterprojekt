@@ -28,7 +28,8 @@
                 
                     <div style="background-color: #f4f4f0; height: 400px; " class="col-md-4">
                         <h2>@item.PageTitle</h2>
-                        <div>@item.Date.ToShortDateString()</div>
+                        <div style="text-decoration: underline;">@item.Date.ToShortDateString()</div>
+                        <hr />
                         <p>@item.Excerpt</p>
                         <button formaction="@item.Url" class="btn-danger">Read More ></button>
                     </div>
@@ -51,15 +52,16 @@
             foreach (var item in newsDown)
             {
 
-                <a style=""class="aColor" href="@item.Url">
-                    <div style="background:url(@item.HeroImage.Url); background-size: cover" class="col-md-4">
-                        <h2>@item.PageTitle</h2>
-                        <div>@item.Date.ToShortDateString()</div>
+                <a class="aColor" href="@item.Url">
+                    <div style="background:url(@item.HeroImage.Url); background-size: cover; margin: 10px;" class="col-md-4">
+                        
+                            <h2><span class="textHigh">@item.PageTitle</span></h2>
+                            <div style="text-decoration: underline;"><span class="textHigh">@item.Date.ToShortDateString()</span></div>
 
-                        
-                        <p>@item.Excerpt</p>
-                        
-                    </div>
+
+                        <p><span class="textHigh">@item.Excerpt</span></p>
+
+</div>
                 </a>
 
             }

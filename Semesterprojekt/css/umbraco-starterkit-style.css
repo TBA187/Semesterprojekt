@@ -214,6 +214,23 @@ td, th {
         color: black;
         text-decoration: none;
     }
+.textHigh {
+    background-color: rgba(0,0,0,.35);
+    color: white;
+}
+.textHigh:hover {
+    background-color: rgba(255,255,255,.60);
+    Color: black;
+}
+.opBack {
+    background-color: rgba(0, 255, 255, 0.6);
+    color: white;
+    padding: 2px 5px 0px 15px
+}
+
+.opBack p{
+    text-decoration: underline;
+}
 /*New ends here*/
 
 

@@ -5,10 +5,11 @@
 }
 @Html.Partial("~/Views/Partials/SectionHeader.cshtml")
 <div class="container">
-    <div style="background-color: #f4f4f0;">
-        <h2 class="">@Model.Content.Excerpt</h2>
-        <p>@Model.Content.Date.ToShortDateString()</p>
-    </div>
-        <img src="@Model.Content.HeroImage.Url?width=800" alt="bannerImg" />
+        <div style="background:url(@Model.Content.HeroImage.Url);height:700px;width:900px;background-size:cover;background-repeat:no-repeat;">
+            <div class="opBack">
+                <h2>@Model.Content.Excerpt</h2>
+                <p >@Model.Content.Date.ToShortDateString()</p>
+            </div>
+        </div>
     <p>@Model.Content.BodyText</p>
 </div>
