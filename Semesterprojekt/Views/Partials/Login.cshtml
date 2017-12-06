@@ -22,21 +22,21 @@
 
 @using (Html.BeginUmbracoForm<UmbLoginController>("HandleLogin"))
 {
-    <fieldset>
-        <legend>Login</legend>
-        
-        @Html.ValidationSummary("loginModel", true)
+    <div class="login-page">
 
-        @Html.LabelFor(m => loginModel.Username)
-        @Html.TextBoxFor(m => loginModel.Username)
-        @Html.ValidationMessageFor(m => loginModel.Username)
-        <br />
+        <div class="form">
+            <h2> Login</h2>
+            <br />
+            @Html.LabelFor(m => loginModel.Username)
+            @Html.TextBoxFor(m => loginModel.Username)
+            @Html.ValidationMessageFor(m => loginModel.Username)
 
-        @Html.LabelFor(m => loginModel.Password)
-        @Html.PasswordFor(m => loginModel.Password)
-        @Html.ValidationMessageFor(m => loginModel.Password)
-        <br />
+            @Html.LabelFor(m => loginModel.Password)
+            @Html.PasswordFor(m => loginModel.Password)
+            @Html.ValidationMessageFor(m => loginModel.Password)
 
-        <button>Login</button>
-    </fieldset>  
+            <button>login</button>
+        </div>
+    </div>
+
 }

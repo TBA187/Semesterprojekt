@@ -8,45 +8,45 @@
 
 @{
     @*
-        You can specify a custom member type alias in the constructor, the default is 'Member'    
+        You can specify a custom member type alias in the constructor, the default is 'Member'
         for example, to use 'Custom Member' you'd use this syntax:
-    
+
         var registerModel = Members.CreateRegistrationModel("Custom Member");
     *@
-    
-    var registerModel = Members.CreateRegistrationModel();
-    
+
+var registerModel = Members.CreateRegistrationModel();
+
     @*
-        Configurable here:           
-    
-        registerModel.RedirectUrl       - Optional. What path to redirect to if registration is successful. 
-                                          By default the member will be redirected to the current umbraco page 
+        Configurable here:
+
+        registerModel.RedirectUrl       - Optional. What path to redirect to if registration is successful.
+                                          By default the member will be redirected to the current umbraco page
                                           unless this is specified.
-    
+
         registerModel.UsernameIsEmail   - the default is true
                                           if you want the username to be different from the email
                                           address, set this to true and add a new Username field in
                                           the form below
-    
+
                                           @Html.LabelFor(m => registerModel.Username)
                                           @Html.TextBoxFor(m => registerModel.Username)
                                           @Html.ValidationMessageFor(m => registerModel.Username)
     *@
-  
-    Html.EnableClientValidation();
-    Html.EnableUnobtrusiveJavaScript();
-    Html.RequiresJs("/umbraco_client/ui/jquery.js");
-    Html.RequiresJs("/umbraco_client/Application/JQuery/jquery.validate.min.js");
-    Html.RequiresJs("/umbraco_client/Application/JQuery/jquery.validate.unobtrusive.min.js");
-    
-    var success = TempData["FormSuccess"] != null;
+
+Html.EnableClientValidation();
+Html.EnableUnobtrusiveJavaScript();
+Html.RequiresJs("/umbraco_client/ui/jquery.js");
+Html.RequiresJs("/umbraco_client/Application/JQuery/jquery.validate.min.js");
+Html.RequiresJs("/umbraco_client/Application/JQuery/jquery.validate.unobtrusive.min.js");
+
+var success = TempData["FormSuccess"] != null;
 }
 
 @*NOTE: This RenderJsHere code should be put on your main template page where the rest of your script tags are placed*@
 @Html.RenderJsHere()
 
-@if (success) 
-{ 
+@if (success)
+{
     @* This message will show if RedirectOnSucces is set to false (default) *@
     <p>Registration succeeeded.</p>
 }
@@ -54,31 +54,31 @@ else
 {
     using (Html.BeginUmbracoForm<UmbRegisterController>("HandleRegisterMember"))
     {
-        <fieldset>
-            <legend>Register Member</legend>
+        <div class="login-page">
+            <div class="form">
+                <h2> Register</h2>
+                <br />
+                @Html.ValidationSummary("registerModel", true)
 
-            @Html.ValidationSummary("registerModel", true)
+                @Html.LabelFor(m => registerModel.Name)
+                @Html.TextBoxFor(m => registerModel.Name)
+                @Html.ValidationMessageFor(m => registerModel.Name)
+                <br />
+                @Html.LabelFor(m => registerModel.Email)
+                @Html.TextBoxFor(m => registerModel.Email)
+                @Html.ValidationMessageFor(m => registerModel.Email)
+                <br />
+                @Html.LabelFor(m => registerModel.Password)
+                @Html.PasswordFor(m => registerModel.Password)
+                @Html.ValidationMessageFor(m => registerModel.Password)
+                <br />
+                <br />
 
-            @Html.LabelFor(m => registerModel.Name)
-            @Html.TextBoxFor(m => registerModel.Name)
-            @Html.ValidationMessageFor(m => registerModel.Name)
-            <br />
-
-            @Html.LabelFor(m => registerModel.Email)
-            @Html.TextBoxFor(m => registerModel.Email)
-            @Html.ValidationMessageFor(m => registerModel.Email)
-            <br />
-
-            @Html.LabelFor(m => registerModel.Password)
-            @Html.PasswordFor(m => registerModel.Password)
-            @Html.ValidationMessageFor(m => registerModel.Password)
-            <br />
-
-            @if (registerModel.MemberProperties != null)
-            {
-                @*
-                    It will only displays properties marked as "Member can edit" on the "Info" tab of the Member Type.
-                *@
+                @if (registerModel.MemberProperties != null)
+                {
+                    @*
+                        It will only displays properties marked as "Member can edit" on the "Info" tab of the Member Type.
+                    *@
                 for (var i = 0; i < registerModel.MemberProperties.Count; i++)
                 {
                     @Html.LabelFor(m => registerModel.MemberProperties[i].Value, registerModel.MemberProperties[i].Name)
@@ -92,14 +92,16 @@ else
                     @Html.EditorFor(m => registerModel.MemberProperties[i].Value)
                     @Html.HiddenFor(m => registerModel.MemberProperties[i].Alias)
                     <br />
+                    }
                 }
-            }
 
-            @Html.HiddenFor(m => registerModel.MemberTypeAlias)
-            @Html.HiddenFor(m => registerModel.RedirectUrl)
-            @Html.HiddenFor(m => registerModel.UsernameIsEmail)
+                @Html.HiddenFor(m => registerModel.MemberTypeAlias)
+                @Html.HiddenFor(m => registerModel.RedirectUrl)
+                @Html.HiddenFor(m => registerModel.UsernameIsEmail)
 
-            <button>Register</button>
-        </fieldset>
+                <button>Register</button>
+            </div>
+        </div>
+
     }
 }
