@@ -73,16 +73,7 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// Features
-		///</summary>
-		[ImplementPropertyType("features")]
-		public object Features
-		{
-			get { return this.GetPropertyValue("features"); }
-		}
-
-		///<summary>
-		/// Photos: You can add multiple photos - the first one will be the default and used in overviews and lists
+		/// Photos
 		///</summary>
 		[ImplementPropertyType("photos")]
 		public IEnumerable<IPublishedContent> Photos
@@ -111,10 +102,10 @@ namespace Umbraco.Web.PublishedContentModels
 		///<summary>
 		/// SKU
 		///</summary>
-		[ImplementPropertyType("sku")]
-		public string Sku
+		[ImplementPropertyType("sKU")]
+		public string SKU
 		{
-			get { return this.GetPropertyValue<string>("sku"); }
+			get { return this.GetPropertyValue<string>("sKU"); }
 		}
 	}
 }

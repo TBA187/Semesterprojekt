@@ -323,6 +323,8 @@
     <Content Include="Views\Partials\Register.cshtml" />
     <Content Include="Views\Partials\Status.cshtml" />
     <Content Include="Views\ErrorPage.cshtml" />
+    <Content Include="Views\MacroPartials\FeaturedProducts.cshtml" />
+    <Content Include="Views\MacroPartials\LatestBlogposts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

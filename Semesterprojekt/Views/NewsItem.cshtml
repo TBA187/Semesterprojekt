@@ -4,11 +4,12 @@
 	Layout = "Master.cshtml";
 }
 @Html.Partial("~/Views/Partials/SectionHeader.cshtml")
+<br />
 <div class="container">
-        <div style="background:url(@Model.Content.HeroImage.Url);height:700px;width:900px;background-size:cover;background-repeat:no-repeat;">
+        <div class="boxShadow newsItem" style="background-image:url(@Model.Content.HeroImage.Url);">
             <div class="opBack">
                 <h2>@Model.Content.Excerpt</h2>
-                <p >@Model.Content.Date.ToShortDateString()</p>
+                <p>@Model.Content.Date.ToShortDateString()</p>
             </div>
         </div>
     <p>@Model.Content.BodyText</p>

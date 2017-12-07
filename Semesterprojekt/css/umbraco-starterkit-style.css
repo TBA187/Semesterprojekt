@@ -214,6 +214,42 @@ td, th {
         color: black;
         text-decoration: none;
     }
+
+.boxShadow {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 0 20px 0 rgba(0, 0, 0, 0.5);
+}
+.fade{
+    position: relative;
+}
+.fade:after {
+    content: "";
+    width: 100%;
+    height: 80px;
+    display: block;
+    position: absolute;
+    background: rgba(150, 123, 19, 1);
+    background: -webkit-gradient(linear, 0% 0% 0% 100%, from(rgba(150, 123, 19, 0.1)), to(rgba(150, 123, 19, 1)));
+    background: -webkit-linear-gradient(top, rgba(150, 123, 19, 0), rgba(150, 123, 19, 1));
+    background: -moz-linear-gradient(top, rgba(150, 123, 19, 0), rgba(150, 123, 19, 1));
+    background: -o-linear-gradient(top, rgba(150, 123, 19, 0), rgba(150, 123, 19, 1));
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.frontNews {
+    background-color: #f4f4f0;
+    height: 400px;
+}
+
+.frontImg{
+    height: 100%;
+}
+.newsRow {
+    background-size: cover;
+    height: 150px;
+}
+
 .textHigh {
     background-color: rgba(0,0,0,.35);
     color: white;
@@ -230,6 +266,14 @@ td, th {
 
 .opBack p{
     text-decoration: underline;
+}
+
+.newsItem {
+    height: 700px;
+    width: 900px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: auto;
 }
 /*New ends here*/
 
