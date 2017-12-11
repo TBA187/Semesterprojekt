@@ -12,5 +12,13 @@
                 <p>@Model.Content.Date.ToShortDateString()</p>
             </div>
         </div>
-    <p>@Model.Content.BodyText</p>
+    <br />
+    <hr />
+    <div class="col-md-12">
+        <article>
+            @Html.GetGridHtml(Model.Content, "bodyText", "bootstrap3-fluid")
+        </article>
+    </div>
+
+    @*Insert comments here (Disqus)*@
 </div>
