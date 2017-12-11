@@ -17,7 +17,7 @@
       <span class="input-group-addon">@cart.Name</span>
     }
     @{
-      int cartStepCount = 2;
+      int cartStepCount = 1;
       foreach ( IPublishedContent cartStep in cartSteps ) {
         string cartStepCssClass = "input-group-addon";
         cartStepCssClass += cartStepCount < activeStep ? " inpath" : "";
