@@ -20,7 +20,7 @@
 @Html.Partial("~/Views/Partials/SectionHeader.cshtml")
 <br /><br />
 <div class="container">
-    <div class="row boxShadow" style="background-color: #f4f4f0; height: 400px; width: auto;">
+    <div class="frontNews row boxShadow">
         @{
             //present the news
             foreach (var item in newsFront)
@@ -59,7 +59,7 @@
                         <div class="newsRow boxShadow" style="background-image:url(@item.HeroImage.Url);">
 
                             <h3><span class="textHigh">@item.PageTitle</span></h3>
-                            <div style="text-decoration: underline;"><span class="textHigh">@item.Date.ToShortDateString()</span></div>
+                            <div><span class="textHigh">@item.Date.ToShortDateString()</span></div>
                             <p><span class="textHigh">@item.Excerpt</span></p>
 
                         </div>
