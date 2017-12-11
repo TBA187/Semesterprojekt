@@ -46,52 +46,34 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// Content
-		///</summary>
-		[ImplementPropertyType("bodyText")]
-		public Newtonsoft.Json.Linq.JToken BodyText
-		{
-			get { return this.GetPropertyValue<Newtonsoft.Json.Linq.JToken>("bodyText"); }
-		}
-
-		///<summary>
-		/// Category
-		///</summary>
-		[ImplementPropertyType("category")]
-		public IEnumerable<string> Category
-		{
-			get { return this.GetPropertyValue<IEnumerable<string>>("category"); }
-		}
-
-		///<summary>
 		/// Description
 		///</summary>
 		[ImplementPropertyType("description")]
-		public string Description
+		public IHtmlString Description
 		{
-			get { return this.GetPropertyValue<string>("description"); }
+			get { return this.GetPropertyValue<IHtmlString>("description"); }
 		}
 
 		///<summary>
-		/// Photos
+		/// Image
 		///</summary>
-		[ImplementPropertyType("photos")]
-		public IEnumerable<IPublishedContent> Photos
+		[ImplementPropertyType("image")]
+		public IPublishedContent Image
 		{
-			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("photos"); }
+			get { return this.GetPropertyValue<IPublishedContent>("image"); }
 		}
 
 		///<summary>
 		/// Price
 		///</summary>
 		[ImplementPropertyType("price")]
-		public decimal Price
+		public string Price
 		{
-			get { return this.GetPropertyValue<decimal>("price"); }
+			get { return this.GetPropertyValue<string>("price"); }
 		}
 
 		///<summary>
-		/// Product Name
+		/// Name
 		///</summary>
 		[ImplementPropertyType("productName")]
 		public string ProductName
@@ -106,6 +88,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public string SKU
 		{
 			get { return this.GetPropertyValue<string>("sKU"); }
+		}
+
+		///<summary>
+		/// Stock
+		///</summary>
+		[ImplementPropertyType("stock")]
+		public object Stock
+		{
+			get { return this.GetPropertyValue("stock"); }
 		}
 	}
 }
