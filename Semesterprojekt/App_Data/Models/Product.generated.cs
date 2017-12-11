@@ -76,9 +76,9 @@ namespace Umbraco.Web.PublishedContentModels
 		/// Features
 		///</summary>
 		[ImplementPropertyType("features")]
-		public object Features
+		public IEnumerable<IPublishedContent> Features
 		{
-			get { return this.GetPropertyValue("features"); }
+			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("features"); }
 		}
 
 		///<summary>
