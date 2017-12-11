@@ -214,6 +214,67 @@ td, th {
         color: black;
         text-decoration: none;
     }
+
+.boxShadow {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 0 20px 0 rgba(0, 0, 0, 0.5);
+}
+.fade{
+    position: relative;
+}
+.fade:after {
+    content: "";
+    width: 100%;
+    height: 80px;
+    display: block;
+    position: absolute;
+    background: rgba(150, 123, 19, 1);
+    background: -webkit-gradient(linear, 0% 0% 0% 100%, from(rgba(150, 123, 19, 0.1)), to(rgba(150, 123, 19, 1)));
+    background: -webkit-linear-gradient(top, rgba(150, 123, 19, 0), rgba(150, 123, 19, 1));
+    background: -moz-linear-gradient(top, rgba(150, 123, 19, 0), rgba(150, 123, 19, 1));
+    background: -o-linear-gradient(top, rgba(150, 123, 19, 0), rgba(150, 123, 19, 1));
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.frontNews {
+    background-color: #f4f4f0;
+    height: 400px;
+}
+
+.frontImg{
+    height: 100%;
+}
+.newsRow {
+    background-size: cover;
+    height: 150px;
+}
+
+.textHigh {
+    background-color: rgba(0,0,0,.35);
+    color: white;
+}
+.textHigh:hover {
+    background-color: rgba(255,255,255,.60);
+    Color: black;
+}
+.opBack {
+    background-color: rgba(0, 255, 255, 0.6);
+    color: white;
+    padding: 2px 5px 0px 15px
+}
+
+.opBack p{
+    text-decoration: underline;
+}
+
+.newsItem {
+    height: 700px;
+    width: 900px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: auto;
+}
 /*New ends here*/
 
 
@@ -1341,9 +1402,9 @@ body.theme-font-mono {
 
     .header--fixed .nav-bar {
         position: absolute;
-        left: 50%;
+        left: 45%;
         top: 50%;
-        transform: translate(-50%,-50%)
+        transform: translate(-20%,-45%);
     }
 
     .header--fixed .nav-link {
@@ -1388,7 +1449,8 @@ footer {
 }
 
 .logo {
-    padding-left: 20px
+    padding-left: 20px;
+    padding-right:50px !important;
 }
 
 .logo-image {
@@ -1405,7 +1467,9 @@ footer {
     -ms-flex-align: center;
     align-items: center;
     -ms-flex-direction: row;
-    flex-direction: row
+    flex-direction: row;
+    width:60%;
+
 }
 
 .nav-bar--list {

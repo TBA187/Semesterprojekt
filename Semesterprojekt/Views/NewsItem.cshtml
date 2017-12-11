@@ -3,3 +3,14 @@
 @{
 	Layout = "Master.cshtml";
 }
+@Html.Partial("~/Views/Partials/SectionHeader.cshtml")
+<br />
+<div class="container">
+        <div class="boxShadow newsItem" style="background-image:url(@Model.Content.HeroImage.Url);">
+            <div class="opBack">
+                <h2>@Model.Content.Excerpt</h2>
+                <p>@Model.Content.Date.ToShortDateString()</p>
+            </div>
+        </div>
+    <p>@Model.Content.BodyText</p>
+</div>

@@ -20,28 +20,32 @@
 @Html.Partial("~/Views/Partials/SectionHeader.cshtml")
 <br /><br />
 <div class="container">
-    <div class="row">
+    <div class="row boxShadow" style="background-color: #f4f4f0; height: 400px; width: auto;">
         @{
             //present the news
             foreach (var item in newsFront)
             {
                 
-                    <div style="background-color: #f4f4f0; height: 400px; " class="col-md-4">
+                    <div  class="col-md-4">
                         <h2>@item.PageTitle</h2>
-                        <div>@item.Date.ToShortDateString()</div>
+                        <div style="text-decoration: underline;">@item.Date.ToShortDateString()</div>
+                        <hr />
                         <p>@item.Excerpt</p>
-                        <button formaction="@item.Url" class="btn-danger">Read More ></button>
+                        <a style="text-decoration: none;"href="@item.Url">
+                            <div class="frontBtn"><p><span class="textHigh">Read More ></span></p></div>
+                        </a>
                     </div>
                     <a class="aWhite" href="@item.Url">
-                        <img class=" col-md-8, img-fluid" src="@item.HeroImage.Url?width=600" alt="#" />
+                        <div class="col-md-8 frontImg" style="background-image: url(@item.HeroImage.Url); background-size: cover;">
+                        </div>
                     </a>
 
-                    
                 break;
             }
         }
     </div>
 </div>
+<br />
 <hr />
 <div class="container">
     <div class="row">
@@ -50,19 +54,19 @@
             //<img class="img-fluid" src="@item.HeroImage.Url?width=300" alt="#" /> <--Orginal img solution
             foreach (var item in newsDown)
             {
+                <div class="col-md-4 ">
+                    <a class="aColor" href="@item.Url">
+                        <div class="newsRow boxShadow" style="background-image:url(@item.HeroImage.Url);">
 
-                <a style=""class="aColor" href="@item.Url">
-                    <div style="background:url(@item.HeroImage.Url); background-size: cover" class="col-md-4">
-                        <h2>@item.PageTitle</h2>
-                        <div>@item.Date.ToShortDateString()</div>
+                            <h3><span class="textHigh">@item.PageTitle</span></h3>
+                            <div style="text-decoration: underline;"><span class="textHigh">@item.Date.ToShortDateString()</span></div>
+                            <p><span class="textHigh">@item.Excerpt</span></p>
 
-                        
-                        <p>@item.Excerpt</p>
-                        
-                    </div>
-                </a>
-
+                        </div>
+                    </a>
+                </div>
             }
         }
     </div>
 </div>
+<br />

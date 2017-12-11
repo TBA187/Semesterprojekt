@@ -1,7 +1,13 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.LoginPopup>
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
-	Layout = null;
+    Layout = "Master.cshtml";
 }
 
-@Html.Partial("Login")
+@Html.Partial("~/Views/Partials/SectionHeader.cshtml")
+
+<div class="form-wrapper">
+    @Html.Partial("Login")
+    <br>
+    @Html.Partial("Register")
+</div>

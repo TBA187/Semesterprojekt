@@ -256,6 +256,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="css\styles.css" />
     <Content Include="css\umbraco-starterkit-style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Media\Web.config" />
@@ -317,6 +318,13 @@
     <Content Include="Views\Partials\Navigation\SubNavigation.cshtml" />
     <Content Include="Views\Partials\Navigation\TopNavigation.cshtml" />
     <Content Include="Views\Partials\SectionHeader.cshtml" />
+    <Content Include="Views\Partials\Login.cshtml" />
+    <Content Include="Views\LoginPopup.cshtml" />
+    <Content Include="Views\Partials\Register.cshtml" />
+    <Content Include="Views\Partials\Status.cshtml" />
+    <Content Include="Views\ErrorPage.cshtml" />
+    <Content Include="Views\MacroPartials\FeaturedProducts.cshtml" />
+    <Content Include="Views\MacroPartials\LatestBlogposts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
