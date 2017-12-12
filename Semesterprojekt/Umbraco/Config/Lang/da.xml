@@ -948,6 +948,7 @@ Mange hilsner fra Umbraco robotten
     <key alias="forms">Formularer</key>
     <key alias="analytics">Analytics</key>
     <key alias="teacommerce">Tea Commerce</key>
+    <key alias="forum">Forum</key>
   </area>
   <area alias="help">
     <key alias="goTo">gå til</key>
