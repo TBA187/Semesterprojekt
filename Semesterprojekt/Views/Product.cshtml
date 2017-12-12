@@ -6,24 +6,25 @@
 
 @inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
-  Layout = "ProductMaster.cshtml";
+    Layout = "ProductMaster.cshtml";
 
-  IPublishedContent productPage = Model.Content;
+    IPublishedContent productPage = Model.Content;
 
-  //store id
-  long storeId = long.Parse( productPage.GetPropertyValue<string>( "store", true ) );
+    //store id
+    long storeId = long.Parse( productPage.GetPropertyValue<string>( "store", true ) );
 
-  //Main product data
-  var productName = productPage.GetPropertyValue<string>( "productName" );
-  var productDescription = new HtmlString( productPage.GetPropertyValue<string>( "description" ) );
+    //Main product data
+    var productName = productPage.GetPropertyValue<string>( "productName" );
+    var productDescription = new HtmlString( productPage.GetPropertyValue<string>( "description" ) );
+    var price = TC.GetPrice(storeId, productPage.Id.ToString());
 
-  IPublishedContent productImage = productPage.GetPropertyValue<IPublishedContent>( "image" ); ;
+    IPublishedContent productImage = productPage.GetPropertyValue<IPublishedContent>( "image" ); ;
 
-  List<VariantPublishedContent> variants = TC.GetVariants( storeId, productPage, true ).ToList();
+    List<VariantPublishedContent> variants = TC.GetVariants( storeId, productPage, true ).ToList();
 
-  List<VariantGroup> attributeGroups = TC.GetVariantGroups( productPage, variants ).ToList();
+    List<VariantGroup> attributeGroups = TC.GetVariantGroups( productPage, variants ).ToList();
 
-  string variantJson = TC.GetVariantJson( storeId, productPage, true );
+    string variantJson = TC.GetVariantJson( storeId, productPage, true );
 }
 
 <script type="text/javascript">
@@ -33,9 +34,9 @@
 <div class="container productView">
   <div class="row">
     <div class="col-sm-8">
-      <div class="productImages">
+      <div class="productImages ">
         @if ( productImage != null ) {
-          <img class="img-responsive" src="@productImage.Url?width=750" />
+          <img class="product-image" src="@productImage.Url" />
         }
       </div>
     </div>
@@ -47,7 +48,7 @@
 
         <div class="well">
           <h1 class="page-header">@productName</h1>
-
+           
           @Html.Raw( productDescription )
 
           <div class="form-horizontal">
@@ -69,6 +70,9 @@
             } else {
               <input name="productIdentifier" value="@productPage.Id" type="hidden" />
             }
+              
+              <p>@price.WithVatFormatted</p>
+
             <div class="form-group">
               <label class="col-sm-3 control-label">Quantity</label>
               <div class="col-sm-9">

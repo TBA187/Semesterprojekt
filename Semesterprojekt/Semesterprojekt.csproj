@@ -258,6 +258,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="css\ProductStyles.css" />
     <Content Include="css\styles.css" />
     <Content Include="css\umbraco-starterkit-style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -329,6 +330,8 @@
     <Content Include="Views\MacroPartials\LatestBlogposts.cshtml" />
     <Content Include="Views\Partials\Forum\_Forum.cshtml" />
     <Content Include="Views\Forum.cshtml" />
+    <Content Include="Views\ProductList.cshtml" />
+    <Content Include="Views\Frontpage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
