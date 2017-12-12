@@ -33,7 +33,8 @@
       count = 0;
       foreach ( IPublishedContent image in carouselImages ) {
         <div class="item @(count == 0 ? "active" : "")">
-          <img src="@image.Url?width=2000&heightratio=0.5&mode=crop" alt="@image.Name">
+          <img src="@image.Url?width=auto&heightratio=0.7&mode=crop&height=500" alt="@image.Name">
+          
         </div>
         count++;
       }
