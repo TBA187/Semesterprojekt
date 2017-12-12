@@ -7,6 +7,18 @@
     margin:0 !important;
 }
 
+.completed {
+    position: absolute;
+    display: flex;
+    left: 0;
+    top: 50%;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    font-size: 30px;
+    justify-content: center;
+    z-index: 100;
+}
 .status {
     position: relative;
     margin: 0 !important;
@@ -27,22 +39,22 @@
     font-family: Noto Sans,sans-serif;
     text-transform: uppercase;
     outline: 0;
-    background: #000;
+    background: #e7afa3;
     width: 100%;
     border: 0;
     padding: 7.5px 0px;
     color: #fff;
     font-size: 14px;
-    font-weight:600;
+    font-weight: 600;
     -webkit-transition: all 0.3 ease;
     transition: all 0.3 ease;
     cursor: pointer;
-    margin:15px;
+    margin: 15px;
 }
 .form-wrapper {
     display:flex;
     flex-direction:row;
-    justify-content:space-around;
+    justify-content:center;
     width:60%;
     margin: 0 auto;
 }
@@ -63,7 +75,7 @@
   background: #FFFFFF;
   max-width: 360px;
   padding: 45px;
-  margin: 100px 0px;
+  margin: 100px 0px 100px 50px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
