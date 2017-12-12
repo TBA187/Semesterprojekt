@@ -85,9 +85,9 @@ namespace Umbraco.Web.PublishedContentModels
 		/// Your Address: Plot your address on the map and it'll be displayed on the contact page
 		///</summary>
 		[ImplementPropertyType("map")]
-		public Terratype.Models.Model Map
+		public object Map
 		{
-			get { return this.GetPropertyValue<Terratype.Models.Model>("map"); }
+			get { return this.GetPropertyValue("map"); }
 		}
 
 		///<summary>

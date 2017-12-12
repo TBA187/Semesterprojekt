@@ -66,10 +66,10 @@ namespace Umbraco.Web.PublishedContentModels
 		///<summary>
 		/// SKU
 		///</summary>
-		[ImplementPropertyType("sKU")]
-		public string SKU
+		[ImplementPropertyType("sku")]
+		public string Sku
 		{
-			get { return this.GetPropertyValue<string>("sKU"); }
+			get { return this.GetPropertyValue<string>("sku"); }
 		}
 
 		///<summary>

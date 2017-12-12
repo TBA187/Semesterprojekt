@@ -49,9 +49,9 @@ namespace Umbraco.Web.PublishedContentModels
 		/// Body text: The content of the news article
 		///</summary>
 		[ImplementPropertyType("bodyText")]
-		public IHtmlString BodyText
+		public Newtonsoft.Json.Linq.JToken BodyText
 		{
-			get { return this.GetPropertyValue<IHtmlString>("bodyText"); }
+			get { return this.GetPropertyValue<Newtonsoft.Json.Linq.JToken>("bodyText"); }
 		}
 
 		///<summary>
