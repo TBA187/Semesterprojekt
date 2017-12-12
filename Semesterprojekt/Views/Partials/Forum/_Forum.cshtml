@@ -1,0 +1,16 @@
+﻿@inherits UmbracoViewPage<Semesterprojekt.Models.Forum>
+
+@using (Html.BeginUmbracoForm("SubmitFormum", "ForumSurface", FormMethod.Post))
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary();
+
+    @Html.LabelFor(m => m.forumTitle);
+    @Html.TextBoxFor(m => m.forumTitle);
+    //@Html.ValidationMessageFor(m => m.forumTitle);
+
+    @Html.LabelFor(m => m.forumSubject);
+    @Html.TextAreaFor(m => m.forumSubject);
+
+    <button>Submit</button>
+}

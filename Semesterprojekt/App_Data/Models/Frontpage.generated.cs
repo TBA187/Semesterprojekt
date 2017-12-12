@@ -20,16 +20,16 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedContentModels
 {
-	/// <summary>Product</summary>
-	[PublishedContentModel("product")]
-	public partial class Product : PublishedContentModel
+	/// <summary>Frontpage</summary>
+	[PublishedContentModel("frontpage")]
+	public partial class Frontpage : PublishedContentModel
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "product";
+		public new const string ModelTypeAlias = "frontpage";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public Product(IPublishedContent content)
+		public Frontpage(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,63 +40,36 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Product, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Frontpage, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
 
 		///<summary>
-		/// Description
+		/// Featured products
 		///</summary>
-		[ImplementPropertyType("description")]
-		public IHtmlString Description
+		[ImplementPropertyType("featuredProducts")]
+		public IEnumerable<IPublishedContent> FeaturedProducts
 		{
-			get { return this.GetPropertyValue<IHtmlString>("description"); }
+			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("featuredProducts"); }
 		}
 
 		///<summary>
-		/// Image
+		/// Slider
 		///</summary>
-		[ImplementPropertyType("image")]
-		public IPublishedContent Image
+		[ImplementPropertyType("slider")]
+		public IEnumerable<IPublishedContent> Slider
 		{
-			get { return this.GetPropertyValue<IPublishedContent>("image"); }
+			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("slider"); }
 		}
 
 		///<summary>
-		/// Price
+		/// Store
 		///</summary>
-		[ImplementPropertyType("price")]
-		public string Price
+		[ImplementPropertyType("store")]
+		public object Store
 		{
-			get { return this.GetPropertyValue<string>("price"); }
-		}
-
-		///<summary>
-		/// Name
-		///</summary>
-		[ImplementPropertyType("productName")]
-		public string ProductName
-		{
-			get { return this.GetPropertyValue<string>("productName"); }
-		}
-
-		///<summary>
-		/// SKU
-		///</summary>
-		[ImplementPropertyType("sKU")]
-		public string SKU
-		{
-			get { return this.GetPropertyValue<string>("sKU"); }
-		}
-
-		///<summary>
-		/// Stock
-		///</summary>
-		[ImplementPropertyType("stock")]
-		public object Stock
-		{
-			get { return this.GetPropertyValue("stock"); }
+			get { return this.GetPropertyValue("store"); }
 		}
 	}
 }

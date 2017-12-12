@@ -20,16 +20,16 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedContentModels
 {
-	/// <summary>Product</summary>
-	[PublishedContentModel("product")]
-	public partial class Product : PublishedContentModel
+	/// <summary>Variant</summary>
+	[PublishedContentModel("variant")]
+	public partial class Variant : PublishedContentModel
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "product";
+		public new const string ModelTypeAlias = "variant";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public Product(IPublishedContent content)
+		public Variant(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,36 +40,18 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Product, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Variant, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
 
 		///<summary>
-		/// Description
-		///</summary>
-		[ImplementPropertyType("description")]
-		public IHtmlString Description
-		{
-			get { return this.GetPropertyValue<IHtmlString>("description"); }
-		}
-
-		///<summary>
-		/// Image
-		///</summary>
-		[ImplementPropertyType("image")]
-		public IPublishedContent Image
-		{
-			get { return this.GetPropertyValue<IPublishedContent>("image"); }
-		}
-
-		///<summary>
 		/// Price
 		///</summary>
-		[ImplementPropertyType("price")]
-		public string Price
+		[ImplementPropertyType("priceJMD")]
+		public string PriceJmd
 		{
-			get { return this.GetPropertyValue<string>("price"); }
+			get { return this.GetPropertyValue<string>("priceJMD"); }
 		}
 
 		///<summary>
@@ -91,7 +73,7 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// Stock
+		/// Stock: Remember to add a sku for the product. Without a sku the variant cannot have it's own stock.
 		///</summary>
 		[ImplementPropertyType("stock")]
 		public object Stock
