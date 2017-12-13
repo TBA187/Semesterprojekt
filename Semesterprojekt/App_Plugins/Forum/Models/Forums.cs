@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Remoting.Contexts;
+using Lucene.Net.Documents;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Semesterprojekt.Models
 {
     public class Forums
     {
-        public int forumId { get; set; }
+        [Key]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        public int ForumId { get; set; }
 
         [Required]
         public string ForumName { get; set; }
@@ -16,12 +21,16 @@ namespace Semesterprojekt.Models
         [Required]
         public DateTime ForumDate { get; set; }
 
-        public int Fk_userid { get; set; }
+        public int fk_UserId { get; set; }
 
-
-        //public class ForumsDBContext : DbContext
-        //{
-        //    public DbSet<Forums> Forums { get; set; }
-        //}
     }
+
+    //public class ForumsContext : Context
+    //{
+    //    public ForumsContext() : base("name=DefaultConnection")
+    //    {
+    //        base.Configuration.ProxyCreationEnabled = false;
+    //    }
+    //    public DbSet<Forums> Friends { get; set; }
+    //}
 }
