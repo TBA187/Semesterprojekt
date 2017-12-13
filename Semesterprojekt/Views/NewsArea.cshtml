@@ -4,11 +4,7 @@
     Layout = "Master.cshtml";
 
     //Get all the news from the News section (NewsDate = CreateDate)
-    var newsDown = Model.Content.Site().Descendants<NewsItem>()
-        .OrderBy(x => x.Date)
-        .Reverse()
-        .Skip(1)
-        .Take(3);
+
 
     var newsFront = Model.Content.Site().Descendants<NewsItem>()
         .OrderBy(x => x.Date)
@@ -25,16 +21,16 @@
             //present the news
             foreach (var item in newsFront)
             {
-                
-                    <div  class="col-md-4">
-                        <h2>@item.PageTitle</h2>
-                        <div style="text-decoration: underline;">@item.Date.ToShortDateString()</div>
-                        <hr />
-                        <p>@item.Excerpt</p>
-                        <a style="text-decoration: none;"href="@item.Url">
-                            <div class="frontBtn"><p><span class="textHigh">Read More ></span></p></div>
-                        </a>
-                    </div>
+
+                <div class="col-md-4">
+                    <h2>@item.PageTitle</h2>
+                    <div style="text-decoration: underline;">@item.Date.ToShortDateString()</div>
+                    <hr />
+                    <p>@item.Excerpt</p>
+                    <a style="text-decoration: none;" href="@item.Url">
+                        <div class="frontBtn"><p><span class="textHigh">Read More ></span></p></div>
+                    </a>
+                </div>
                     <a class="aWhite" href="@item.Url">
                         <div class="col-md-8 frontImg" style="background-image: url(@item.HeroImage.Url); background-size: cover;">
                         </div>
@@ -49,23 +45,21 @@
 <hr />
 <div class="container">
     <div class="row">
-        @{
-            //present the news
-            //<img class="img-fluid" src="@item.HeroImage.Url?width=300" alt="#" /> <--Orginal img solution
-            foreach (var item in newsDown)
-            {
-                <div class="col-md-4 ">
-                    <a class="aColor" href="@item.Url">
-                        <div class="newsRow boxShadow" style="background-image:url(@item.HeroImage.Url);">
+        @foreach (NewsItem item in Model.Content.FeaturedNews)
+        {
 
-                            <h3><span class="textHigh">@item.PageTitle</span></h3>
-                            <div><span class="textHigh">@item.Date.ToShortDateString()</span></div>
-                            <p><span class="textHigh">@item.Excerpt</span></p>
+            <div class="col-md-4 ">
+                <a class="aColor" href="@item.Url">
+                    <div class="newsRow boxShadow" style="background-image:url(@item.HeroImage.Url);">
 
-                        </div>
-                    </a>
-                </div>
-            }
+                        <h3><span class="textHigh">@item.PageTitle</span></h3>
+                        <div><span class="textHigh">@item.Date.ToShortDateString()</span></div>
+                        <p><span class="textHigh">@item.Excerpt</span></p>
+
+                    </div>
+                </a>
+            </div>
+        }
         }
     </div>
 </div>

@@ -46,6 +46,15 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Featured News: Select the featured news on the page
+		///</summary>
+		[ImplementPropertyType("featuredNews")]
+		public IEnumerable<IPublishedContent> FeaturedNews
+		{
+			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("featuredNews"); }
+		}
+
+		///<summary>
 		/// Content
 		///</summary>
 		[ImplementPropertyType("bodyText")]
