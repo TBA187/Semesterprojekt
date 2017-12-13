@@ -20,7 +20,7 @@ namespace Semesterprojekt.Controllers
         protected override Umbraco.Web.Models.Trees.TreeNodeCollection GetTreeNodes(string id, FormDataCollection queryStrings)
         {
             var nodes = new Umbraco.Web.Models.Trees.TreeNodeCollection();
-            var item = this.CreateTreeNode("dashboard", id, queryStrings, "My item", "icon-truck", true);
+            var item = this.CreateTreeNode("forumDashboard", id, queryStrings, "Forum item", "icon-truck", true);
             nodes.Add(item);
             return nodes;
         }
@@ -29,7 +29,7 @@ namespace Semesterprojekt.Controllers
         {
             var menu = new Umbraco.Web.Models.Trees.MenuItemCollection();
             menu.DefaultMenuAlias = ActionNew.Instance.Alias;
-            menu.Items.Add<ActionNew>("Create");
+            menu.Items.Add<ActionNew>("");
             return menu;
         }
     }
