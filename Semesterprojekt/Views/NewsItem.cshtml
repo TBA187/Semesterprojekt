@@ -1,17 +1,22 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.NewsItem>
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
-	Layout = "Master.cshtml";
+    Layout = "Master.cshtml";
+
+    var newsDown = Model.Content.Site().Ancestors<NewsItem>()
+    .OrderBy(x => x.Date)
+    .Reverse()
+    .Take(3);
 }
 @Html.Partial("~/Views/Partials/SectionHeader.cshtml")
 <br />
 <div class="container">
-        <div class="boxShadow newsItem" style="background-image:url(@Model.Content.HeroImage.Url);">
-            <div class="opBack">
-                <h2>@Model.Content.Excerpt</h2>
-                <p>@Model.Content.Date.ToShortDateString()</p>
-            </div>
+    <div class="boxShadow newsItem" style="background-image:url(@Model.Content.HeroImage.Url);">
+        <div class="opBack">
+            <h2>@Model.Content.Excerpt</h2>
+            <p>@Model.Content.Date.ToShortDateString()</p>
         </div>
+    </div>
     <br />
     <hr />
     <div class="col-md-12">
@@ -19,6 +24,27 @@
             @Html.GetGridHtml(Model.Content, "bodyText", "bootstrap3-fluid")
         </article>
     </div>
-
-    @*Insert comments here (Disqus)*@
 </div>
+    <div class="container">
+        <div class="row">
+            @{foreach (var item in newsDown)
+                {
+
+                    <div class="col-md-4 ">
+                        <a class="aColor" href="@item.Url">
+                            <div class="newsRow boxShadow" style="background-image:url(@item.HeroImage.Url);">
+
+                                <h3><span class="textHigh">@item.PageTitle</span></h3>
+                                <div><span class="textHigh">@item.Date.ToShortDateString()</span></div>
+                                <p><span class="textHigh">@item.Excerpt</span></p>
+
+                            </div>
+                        </a>
+                    </div>
+                }
+            }
+
+            </div>
+        </div>
+            @*Insert comments here (Disqus)*@
+

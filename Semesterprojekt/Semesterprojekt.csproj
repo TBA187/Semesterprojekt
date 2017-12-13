@@ -332,6 +332,7 @@
     <Content Include="Views\Forum.cshtml" />
     <Content Include="Views\ProductList.cshtml" />
     <Content Include="Views\Frontpage.cshtml" />
+    <Content Include="Views\MacroPartials\FeaturedNews.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
