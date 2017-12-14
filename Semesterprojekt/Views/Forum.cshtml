@@ -1,18 +1,12 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
-    Layout = "Master.cshtml";
+	Layout = "Master.cshtml";
 }
 
 @* the fun starts here *@
 
-
-
-
-    <div class="container">
-        <div class="row">
-
-            xcbfgb
-            xg
-        </div>
-    </div>
-
+<div class="container">
+    @{ 
+        Html.RenderAction("RenderForum", "ForumSurface");
+    }
+</div>

@@ -1,138 +1,43 @@
-﻿<html>
-<head>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-    <script type="text/javascript">
-        //Defining a Angular module
-        var myApp = angular.module('myApp', []);
+﻿<script>
 
-        //Defining a Angular Controller
-        myApp.controller('MyCtrl', ['$scope', '$http', function ($scope, $http) {
+    function CustomSectionEditController($scope, $routeParams) {
+        $scope.content = { tabs: [{ id: 1, label: "Tab 1" }, { id: 2, label: "Tab 2" }] };
 
-            //Retrieving the List of people
-            GetForums();
-            //Displaying the Save button
-            $scope.DisplaySave = true;
+        $scope.EditMode = function () {
+            return $routeParams.create == 'true';
+        };
+    }
+</script>
 
-            function GetForums() {
-                //Defining the $http service for getting the forum
-                $http({
-                    method: 'GET',
-                    url: '/umbraco/backoffice/api/forum/get'
-                }).
-                    success(function (data) {
-                        if (data != null || data != 'undefined') {
-                            //Assigning forum data to the $scope variable
-                            $scope.forums = data;
-                            //Clearing the forum object in create contextd
-                            $scope.newforum = {
-                                ForumId: ''
-                            };
-                        }
-                    })
-                    .error(function (error) {
-                        //Showing error message
-                        $scope.status = 'Unable to retrieve forums: ' + error.message;
-                    });
-            }
+<div ng-controller="CustomSectionEditController">
 
-            //Create new forum
-            $scope.createForum = function () {
-                $http({
-                    method: 'POST',
-                    url: '/umbraco/backoffice/api/forum/post',
-                    data: JSON.stringify($scope.newforum),
-                    headers: { 'Content-Type': 'application/JSON' }
-                }).
-                    success(function (data) {
-                        //Showing success message
-                        $scope.status = "The Forum Saved Successfully!!!";
-                        //Updating forums Model
-                        GetForums();
-                    })
-                    .error(function (error) {
-                        //Showing error message
-                        $scope.status = 'Unable to create a forum: ' + error.message;
-                    });
-            }
+    <umb-panel>
+        <umb-header tabs="content.tabs">
+            <div class="umb-headline-editor-wrapper span12 ng-scope">
+                <h1 class="ng-binding">My custom section {{id}}</h1>
+            </div>
+        </umb-header>
 
+        <umb-tab-view>
+            <umb-tab id="tab1" rel="svensson">
 
-            //Update forum
-            $scope.updateForum = function () {
-                $http({
-                    method: 'PUT',
-                    url: 'umbraco/backoffice/api/forum/put',
-                    data: JSON.stringify($scope.newperson),
-                    headers: { 'Content-Type': 'application/JSON' }
-                }).
-                    success(function (data) {
-                        //Showing Success message
-                        $scope.status = "The Forum Updated Successfully!!!";
-                        //Loading people to the $scope
-                        GetPersons();
-                        //Displaying save button
-                        $scope.DisplaySave = true;
-                        //Hiding Update button
-                        $scope.DisplayUpdate = false;
-                    })
-                    .error(function (error) {
-                        //Showing error message
-                        $scope.status = 'Unable to update forum: ' + error.message;
-                    });
-            }
+                <div class="umb-pane">
+                    This is tab content for tab 1<br />
+                    <p ng-show="EditMode()">
+                        <span class="label label-warning">In create mode, this label is only showed when the controller sees the create-querystring item.</span>
+                    </p>
+                </div>
+            </umb-tab>
 
-            //Delete forum
-            $scope.deleteForum = function (pId) {
-                $http({
-                    method: 'DELETE',
-                    url: '/umbraco/backoffice/api/forum/delete' + pId
-                }).
-                    success(function (data) {
-                        //Showing Success message
-                        $scope.status = "The Forum Deleted Successfully!!!";
-                        //Loading people to the $scope
-                        GetPersons();
-                    })
-                    .error(function (error) {
-                        //Showing error message
-                        $scope.status = 'Unable to delete forum: ' + error.message;
-                    });
-            }
+            <umb-tab id="tab2" rel="kalle">
 
-        }]);
-    </script>
-</head>
-<body>
-    <div data-ng-app="myApp" style="padding: 25px;">
-        <div data-ng-controller="MyCtrl">
-            <form>
-                <table>
-                    <tr>
-                        <td><b>Name</b></td>
-                        <td><b>Date</b></td>
-                        <td><b>Created by</b></td>
-                    </tr>
-                    <tr ng-repeat-start="forum in forums">
-                        <td>{{forum.ForumName}}</td>
-                    </tr>
-                    <tr ng-repeat-end>
-                        <td>{{forum.ForumDate}}</td>
-                    </tr>
-                </table>
+                <div class="umb-pane">
 
-                <h2>Make a new forum</h2>
-                <input type="hidden" data-ng-model="newforum.Id" />
-                <b>Name:</b>
-                <input type="text" name="Name" id="Name" data-ng-model="newforum.ForumName" placeholder="Name" required />
-                <br /><br />
-                <b>Date:</b>
-                <input type="text" name="Date" id="Date" data-ng-model="newforum.ForumDate" placeholder="Date" required />
-                <br />
-                <br />
-                <input type="button" value="Save" data-ng-show="DisplaySave" data-ng-click="createForum()" />
-                <br />
-                <p>{{status}}</p>
-            </form>
-        </div>
-    </div>
-</body>
-</html>
+                    This is tab content for tab 2
+                </div>
+            </umb-tab>
+
+        </umb-tab-view>
+    </umb-panel>
+
+</div>
