@@ -20,7 +20,7 @@ namespace Semesterprojekt.Controllers
         protected override Umbraco.Web.Models.Trees.TreeNodeCollection GetTreeNodes(string id, FormDataCollection queryStrings)
         {
             var nodes = new Umbraco.Web.Models.Trees.TreeNodeCollection();
-            var item = this.CreateTreeNode("forumDashboard", id, queryStrings, "Forum item", "icon-truck", true);
+            var item = this.CreateTreeNode("forumDashboard", id, queryStrings, "Forum", "icon-truck", true);
             nodes.Add(item);
             return nodes;
         }

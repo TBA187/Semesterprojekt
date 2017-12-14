@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EFForum.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="UForum">
+          <Key>
+            <PropertyRef Name="ForumId" />
+          </Key>
+          <Property Name="ForumId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ForumName" Type="varchar" MaxLength="255" />
+          <Property Name="ForumDate" Type="date" />
+          <Property Name="fk_userid" Type="int" />
+        </EntityType>
+        <EntityType Name="UForumCat">
+          <Key>
+            <PropertyRef Name="CatId" />
+          </Key>
+          <Property Name="CatId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CatName" Type="varchar" MaxLength="255" />
+          <Property Name="CatDesc" Type="text" />
+          <Property Name="CatDate" Type="date" />
+          <Property Name="fk_ForumId" Type="int" />
+          <Property Name="fk_UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="UForumThread">
+          <Key>
+            <PropertyRef Name="ThreadId" />
+          </Key>
+          <Property Name="ThreadId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ThreadName" Type="varchar" MaxLength="255" />
+          <Property Name="ThreadText" Type="text" />
+          <Property Name="ThreadDate" Type="date" />
+          <Property Name="fk_CatId" Type="int" />
+          <Property Name="fk_UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="UForumTopic">
+          <Key>
+            <PropertyRef Name="TopicId" />
+          </Key>
+          <Property Name="TopicId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TopicTitle" Type="varchar" MaxLength="255" />
+          <Property Name="TopicText" Type="text" />
+          <Property Name="TopicDate" Type="date" />
+          <Property Name="fk_ThreadId" Type="int" />
+          <Property Name="fk_UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="UForumTopicReply">
+          <Key>
+            <PropertyRef Name="TopicRId" />
+          </Key>
+          <Property Name="TopicRId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TopicRTitle" Type="varchar" MaxLength="255" />
+          <Property Name="TopicRText" Type="text" />
+          <Property Name="TopicRDate" Type="date" />
+          <Property Name="fk_TopicId" Type="int" />
+          <Property Name="fk_UserId" Type="int" />
+        </EntityType>
+        <EntityContainer Name="EFForumStoreContainer">
+          <EntitySet Name="UForum" EntityType="Self.UForum" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UForumCat" EntityType="Self.UForumCat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UForumThread" EntityType="Self.UForumThread" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UForumTopic" EntityType="Self.UForumTopic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UForumTopicReply" EntityType="Self.UForumTopicReply" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EFForum" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="UForum">
+          <Key>
+            <PropertyRef Name="ForumId" />
+          </Key>
+          <Property Name="ForumId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ForumName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ForumDate" Type="DateTime" Precision="0" />
+          <Property Name="fk_userid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UForumCat">
+          <Key>
+            <PropertyRef Name="CatId" />
+          </Key>
+          <Property Name="CatId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CatName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CatDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CatDate" Type="DateTime" Precision="0" />
+          <Property Name="fk_ForumId" Type="Int32" />
+          <Property Name="fk_UserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UForumThread">
+          <Key>
+            <PropertyRef Name="ThreadId" />
+          </Key>
+          <Property Name="ThreadId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ThreadName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ThreadText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ThreadDate" Type="DateTime" Precision="0" />
+          <Property Name="fk_CatId" Type="Int32" />
+          <Property Name="fk_UserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UForumTopic">
+          <Key>
+            <PropertyRef Name="TopicId" />
+          </Key>
+          <Property Name="TopicId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TopicTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TopicText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TopicDate" Type="DateTime" Precision="0" />
+          <Property Name="fk_ThreadId" Type="Int32" />
+          <Property Name="fk_UserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UForumTopicReply">
+          <Key>
+            <PropertyRef Name="TopicRId" />
+          </Key>
+          <Property Name="TopicRId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TopicRTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TopicRText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TopicRDate" Type="DateTime" Precision="0" />
+          <Property Name="fk_TopicId" Type="Int32" />
+          <Property Name="fk_UserId" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="forumDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UForums" EntityType="Self.UForum" />
+          <EntitySet Name="UForumCats" EntityType="Self.UForumCat" />
+          <EntitySet Name="UForumThreads" EntityType="Self.UForumThread" />
+          <EntitySet Name="UForumTopics" EntityType="Self.UForumTopic" />
+          <EntitySet Name="UForumTopicReplies" EntityType="Self.UForumTopicReply" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EFForumStoreContainer" CdmEntityContainer="forumDB">
+          <EntitySetMapping Name="UForums">
+            <EntityTypeMapping TypeName="EFForum.UForum">
+              <MappingFragment StoreEntitySet="UForum">
+                <ScalarProperty Name="ForumId" ColumnName="ForumId" />
+                <ScalarProperty Name="ForumName" ColumnName="ForumName" />
+                <ScalarProperty Name="ForumDate" ColumnName="ForumDate" />
+                <ScalarProperty Name="fk_userid" ColumnName="fk_userid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UForumCats">
+            <EntityTypeMapping TypeName="EFForum.UForumCat">
+              <MappingFragment StoreEntitySet="UForumCat">
+                <ScalarProperty Name="CatId" ColumnName="CatId" />
+                <ScalarProperty Name="CatName" ColumnName="CatName" />
+                <ScalarProperty Name="CatDesc" ColumnName="CatDesc" />
+                <ScalarProperty Name="CatDate" ColumnName="CatDate" />
+                <ScalarProperty Name="fk_ForumId" ColumnName="fk_ForumId" />
+                <ScalarProperty Name="fk_UserId" ColumnName="fk_UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UForumThreads">
+            <EntityTypeMapping TypeName="EFForum.UForumThread">
+              <MappingFragment StoreEntitySet="UForumThread">
+                <ScalarProperty Name="ThreadId" ColumnName="ThreadId" />
+                <ScalarProperty Name="ThreadName" ColumnName="ThreadName" />
+                <ScalarProperty Name="ThreadText" ColumnName="ThreadText" />
+                <ScalarProperty Name="ThreadDate" ColumnName="ThreadDate" />
+                <ScalarProperty Name="fk_CatId" ColumnName="fk_CatId" />
+                <ScalarProperty Name="fk_UserId" ColumnName="fk_UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UForumTopics">
+            <EntityTypeMapping TypeName="EFForum.UForumTopic">
+              <MappingFragment StoreEntitySet="UForumTopic">
+                <ScalarProperty Name="TopicId" ColumnName="TopicId" />
+                <ScalarProperty Name="TopicTitle" ColumnName="TopicTitle" />
+                <ScalarProperty Name="TopicText" ColumnName="TopicText" />
+                <ScalarProperty Name="TopicDate" ColumnName="TopicDate" />
+                <ScalarProperty Name="fk_ThreadId" ColumnName="fk_ThreadId" />
+                <ScalarProperty Name="fk_UserId" ColumnName="fk_UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UForumTopicReplies">
+            <EntityTypeMapping TypeName="EFForum.UForumTopicReply">
+              <MappingFragment StoreEntitySet="UForumTopicReply">
+                <ScalarProperty Name="TopicRId" ColumnName="TopicRId" />
+                <ScalarProperty Name="TopicRTitle" ColumnName="TopicRTitle" />
+                <ScalarProperty Name="TopicRText" ColumnName="TopicRText" />
+                <ScalarProperty Name="TopicRDate" ColumnName="TopicRDate" />
+                <ScalarProperty Name="fk_TopicId" ColumnName="fk_TopicId" />
+                <ScalarProperty Name="fk_UserId" ColumnName="fk_UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
