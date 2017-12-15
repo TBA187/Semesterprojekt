@@ -14,7 +14,3 @@ Could not find any UmbracoForms licensing files in C:\Users\damga\Source\Repos\S
 Could not find any UmbracoForms licensing files in C:\Users\damga\Source\Repos\Semesterprojekt\Semesterprojekt\bin:
 Could not find any UmbracoForms licensing files in C:\Users\damga\Source\Repos\Semesterprojekt\Semesterprojekt\bin:
 Could not find any UmbracoForms licensing files in C:\Users\damga\Source\Repos\Semesterprojekt\Semesterprojekt\bin:
-Could not find any UmbracoForms licensing files in C:\Users\damga\Source\Repos\Semesterprojekt\Semesterprojekt\bin:
-Could not find any UmbracoForms licensing files in C:\Users\damga\Source\Repos\Semesterprojekt\Semesterprojekt\bin:
-Could not find any UmbracoForms licensing files in C:\Users\damga\Source\Repos\Semesterprojekt\Semesterprojekt\bin:
-Could not find any UmbracoForms licensing files in C:\Users\damga\Source\Repos\Semesterprojekt\Semesterprojekt\bin:

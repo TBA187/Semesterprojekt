@@ -3,10 +3,10 @@
 @{
     Layout = "Master.cshtml";
 
-    var newsDown = Model.Content.Site().Ancestors<NewsItem>()
-    .OrderBy(x => x.Date)
-    .Reverse()
-    .Take(3);
+    var latest = Model.Content.Siblings()
+                    .Where(x => x.Id != Model.Content.Id)
+                    .OrderByDescending(x => x.CreateDate)
+                    .Take(3);
 }
 @Html.Partial("~/Views/Partials/SectionHeader.cshtml")
 <br />
@@ -27,7 +27,7 @@
 </div>
     <div class="container">
         <div class="row">
-            @{foreach (var item in newsDown)
+            @{foreach (var item in latest)
                 {
 
                     <div class="col-md-4 ">

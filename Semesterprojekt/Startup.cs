@@ -1,15 +1,12 @@
 ﻿using Umbraco.Core;
 using Umbraco.Core.Models;
 
-namespace Forum
-{
-
-    public class Startup : ApplicationEventHandler
-    {
-
-        protected override void ApplicationStarted(UmbracoApplicationBase umbraco, ApplicationContext context)
-        {
-
+namespace SkriftDemo {
+    
+    public class Startup : ApplicationEventHandler {
+        
+        protected override void ApplicationStarted(UmbracoApplicationBase umbraco, ApplicationContext context) {
+            
             // Gets a reference to the section (if already added)
             Section section = context.Services.SectionService.GetByAlias("forum");
             if (section != null) return;
@@ -26,7 +23,7 @@ namespace Forum
             }
 
         }
-
+    
     }
 
 }
