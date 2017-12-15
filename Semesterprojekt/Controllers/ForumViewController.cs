@@ -10,9 +10,9 @@ namespace Semesterprojekt.Controllers
 {
     public class ForumViewController : Controller
     {
-        private ForumViewModel forum = new ForumViewModel();
+        //private ForumViewModel forum = new ForumViewModel();
 
-        forumDB context = new forumDB();
+        //forumDB context = new forumDB();
 
         //public ActionResult Index()
         //{
@@ -34,13 +34,13 @@ namespace Semesterprojekt.Controllers
         //}
 
 
-        public ActionResult Index()
-        {
+        //public ActionResult Index()
+        //{
 
-            string record = "asfdasd";
+        //    string record = "asfdasd";
 
-            return View(record);
-        }
+        //    return View(record);
+        //}
 
     }
 }
