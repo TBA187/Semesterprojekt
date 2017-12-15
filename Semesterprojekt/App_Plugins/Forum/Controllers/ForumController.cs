@@ -9,17 +9,30 @@ namespace Semesterprojekt.App_Plugins.Forum.Controllers
 {
     public class ForumControllerss :  Controller
     {
-        //Forum
-
-        //public HomeController()
+        //public class PersonsController : ApiController
         //{
-        //    _db = new MoviesDBEntities();
-        //}
+        //    //GET api/person
+        //    //For retrieving all the people
+        //    public IEnumerable<Person> GetPeople()
+        //    {
+        //        alphajob_dk_dbEntities context = new alphajob_dk_dbEntities();
+        //        var _persons = from p in context.People.AsEnumerable()
+        //                       select p;
+        //        return _persons;
+        //    }
 
-        //public ActionResult Index()
-        //{
-        //    ViewData.Model = _db.MovieSet.ToList();
-        //    return View();
+        //    //POST api/person 
+        //    //For creating new person
+        //    [HttpPost]
+        //    public HttpResponseMessage PostPerson(Person p)
+        //    {
+        //        if (p == null)
+        //            return new HttpResponseMessage(HttpStatusCode.BadRequest);
+        //        alphajob_dk_dbEntities context = new alphajob_dk_dbEntities();
+        //        context.People.Add(p);
+        //        context.SaveChanges();
+        //        return new HttpResponseMessage(HttpStatusCode.Created);
+        //    }
         //}
     }
 }

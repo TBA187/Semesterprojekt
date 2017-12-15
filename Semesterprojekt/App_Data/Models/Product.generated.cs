@@ -98,5 +98,14 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			get { return this.GetPropertyValue("stock"); }
 		}
+
+		///<summary>
+		/// Variant
+		///</summary>
+		[ImplementPropertyType("variants")]
+		public object Variants
+		{
+			get { return this.GetPropertyValue("variants"); }
+		}
 	}
 }

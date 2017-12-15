@@ -8,7 +8,7 @@
         //Defining a Angular Controller
         myApp.controller('MyCtrl', ['$scope', '$http', function ($scope, $http) {
 
-            //Retrieving the List of people
+            //Retrieving the List of Forums
             GetForums();
             //Displaying the Save button
             $scope.DisplaySave = true;
@@ -23,7 +23,7 @@
                         if (data != null || data != 'undefined') {
                             //Assigning forum data to the $scope variable
                             $scope.forums = data;
-                            //Clearing the forum object in create contextd
+                            //Clearing the forum object in create context
                             $scope.newforum = {
                                 ForumId: ''
                             };
@@ -55,20 +55,40 @@
                     });
             }
 
+            //Edit a forum
+            $scope.editForum = function (pId) {
+                for (i in $scope.forums) {
+                    //Getting the forum details from scope based on id
+                    if ($scope.forums[i].ForumId == pId) {
+                        //Assigning the Create user scope variable for editing
+                        $scope.newforum = {
+                            ForumId: $scope.forums[i].ForumId,
+                            ForumName: $scope.forums[i].ForumName
+                        };
+                        //Hiding Save button
+                        $scope.DisplaySave = false;
+                        //Displaying Update button
+                        $scope.DisplayUpdate = true;
+                        //Clearing the Status
+                        $scope.status = '';
+                    }
+                }
+            }
 
-            //Update forum
+            //Update a forum
             $scope.updateForum = function () {
+                //Defining $http service for updating a forum
                 $http({
                     method: 'PUT',
                     url: 'umbraco/backoffice/api/forum/put',
-                    data: JSON.stringify($scope.newperson),
+                    data: JSON.stringify($scope.newforum),
                     headers: { 'Content-Type': 'application/JSON' }
                 }).
                     success(function (data) {
                         //Showing Success message
                         $scope.status = "The Forum Updated Successfully!!!";
                         //Loading people to the $scope
-                        GetPersons();
+                        GetForums();
                         //Displaying save button
                         $scope.DisplaySave = true;
                         //Hiding Update button
@@ -76,7 +96,7 @@
                     })
                     .error(function (error) {
                         //Showing error message
-                        $scope.status = 'Unable to update forum: ' + error.message;
+                        $scope.status = 'Unable to update the forum: ' + error.message;
                     });
             }
 
@@ -84,51 +104,52 @@
             $scope.deleteForum = function (pId) {
                 $http({
                     method: 'DELETE',
-                    url: '/umbraco/backoffice/api/forum/delete' + pId
+                    url: '/umbraco/backoffice/api/forum/delete/' + pId,
                 }).
                     success(function (data) {
                         //Showing Success message
                         $scope.status = "The Forum Deleted Successfully!!!";
-                        //Loading people to the $scope
-                        GetPersons();
+                        //Loading Forum to the $scope
+                        GetForums();
                     })
                     .error(function (error) {
                         //Showing error message
                         $scope.status = 'Unable to delete forum: ' + error.message;
                     });
             }
-
         }]);
     </script>
 </head>
 <body>
-    <div data-ng-app="myApp" style="padding: 25px;">
+    <div data-ng-app="myApp">
         <div data-ng-controller="MyCtrl">
             <form>
-                <table>
+                <h2>All forums</h2>
+                <table cellpadding="5">
                     <tr>
                         <td><b>Name</b></td>
-                        <td><b>Date</b></td>
-                        <td><b>Created by</b></td>
+                        <td><b>Action</b></td>
                     </tr>
-                    <tr ng-repeat-start="forum in forums">
+                    <tr data-ng-repeat="forum in forums">
                         <td>{{forum.ForumName}}</td>
-                    </tr>
-                    <tr ng-repeat-end>
-                        <td>{{forum.ForumDate}}</td>
+                        <td>
+                            <a href="" data-ng-click="editForum(forum.ForumId)">Edit</a> |
+                            <a href="" data-ng-click="deleteForum(forum.ForumId)">Delete</a>
+                        </td>
                     </tr>
                 </table>
+                <br />
+                <br />
 
-                <h2>Make a new forum</h2>
-                <input type="hidden" data-ng-model="newforum.Id" />
+                <h2>Create Forum</h2>
+                <input type="hidden" data-ng-model="newforum.ForumId" />
                 <b>Name:</b>
                 <input type="text" name="Name" id="Name" data-ng-model="newforum.ForumName" placeholder="Name" required />
-                <br /><br />
-                <b>Date:</b>
-                <input type="text" name="Date" id="Date" data-ng-model="newforum.ForumDate" placeholder="Date" required />
                 <br />
                 <br />
                 <input type="button" value="Save" data-ng-show="DisplaySave" data-ng-click="createForum()" />
+                <input type="button" value="Update" data-ng-show="DisplayUpdate" data-ng-click="updateForum()" />
+                <br />
                 <br />
                 <p>{{status}}</p>
             </form>
