@@ -272,8 +272,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="ForumEF.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ForumEF.edmx</DependentUpon>
       <LastGenOutput>ForumEF.Context.cs</LastGenOutput>
+      <DependentUpon>ForumEF.edmx</DependentUpon>
     </Content>
     <Content Include="ForumEF.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -396,7 +396,7 @@
   <ItemGroup>
     <Compile Include="App_Plugins\Forum\Application\ForumSection.cs" />
     <Compile Include="App_Plugins\Forum\Controllers\ForumController.cs" />
-    <Compile Include="App_Plugins\Forum\Models\Forums.cs" />
+    <Compile Include="App_Plugins\Forum\Models\Models.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ForumTreeController.cs" />
     <Compile Include="Controllers\ForumController.cs" />
